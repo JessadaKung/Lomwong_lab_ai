@@ -8,6 +8,7 @@ from google import genai
 from menu_catalog import MENU_CATALOG
 from order_logger import CustomerOrder, OrderItem, append_order, format_order_message, google_sheet_configured
 from rag_engine import RAGEngine
+from telegram_report import send_order_notification, send_today_report, telegram_configured
 
 
 load_dotenv()
@@ -227,6 +228,8 @@ def render_order_tab() -> None:
             "ยังไม่ได้ตั้งค่า GOOGLE_SHEET_ID และ GOOGLE_SERVICE_ACCOUNT_JSON ใน Hugging Face Secrets "
             "ตอนนี้ระบบจะสรุปออเดอร์ให้ แต่ยังไม่บันทึกลง Google Sheets"
         )
+    if not telegram_configured():
+        st.info("ถ้าต้องการส่งออเดอร์/รายงานเข้า Telegram ให้ตั้งค่า TELEGRAM_BOT_TOKEN และ TELEGRAM_CHAT_ID")
 
     if submitted:
         if not st.session_state.order_cart:
@@ -257,6 +260,12 @@ def render_order_tab() -> None:
             try:
                 result = append_order(order)
                 st.success(f"บันทึกออเดอร์ {result['order_id']} แล้ว ยอดรวม {result['total']:.0f} บาท")
+                if telegram_configured():
+                    try:
+                        send_order_notification(order, order_id=str(result["order_id"]))
+                        st.success("ส่งแจ้งเตือนออเดอร์เข้า Telegram แล้ว")
+                    except Exception as exc:
+                        st.warning(f"บันทึกออเดอร์แล้ว แต่ส่ง Telegram ไม่สำเร็จ: {exc}")
                 st.session_state.order_cart = []
             except Exception as exc:
                 st.error(f"บันทึกลง Google Sheets ไม่สำเร็จ: {exc}")
@@ -265,6 +274,17 @@ def render_order_tab() -> None:
             st.info("คัดลอกข้อความนี้ส่งให้ร้านทาง Facebook หรือโทรแจ้งร้านได้")
 
         st.code(message, language="text")
+
+    st.divider()
+    st.subheader("รายงาน Telegram")
+    st.caption("ส่งรายงานยอดขายของวันนี้จาก Google Sheets เข้า Telegram")
+    report_disabled = not google_sheet_configured() or not telegram_configured()
+    if st.button("ส่งรายงานวันนี้เข้า Telegram", disabled=report_disabled, use_container_width=True):
+        try:
+            send_today_report()
+            st.success("ส่งรายงานวันนี้เข้า Telegram แล้ว")
+        except Exception as exc:
+            st.error(f"ส่งรายงานไม่สำเร็จ: {exc}")
 
 
 inject_styles()
