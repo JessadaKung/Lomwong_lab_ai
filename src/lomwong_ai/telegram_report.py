@@ -9,7 +9,7 @@ from dataclasses import dataclass
 from datetime import date, datetime
 from typing import Any
 
-from src.lomwong_ai.order_logger import (
+from .order_logger import (
     BANGKOK_TZ,
     CustomerOrder,
     format_order_message,
