@@ -108,30 +108,306 @@ def inject_styles() -> None:
     st.markdown(
         """
         <style>
+        :root {
+            --lw-bg: #11130f;
+            --lw-panel: #191b16;
+            --lw-panel-soft: #20231d;
+            --lw-line: rgba(238, 231, 211, 0.14);
+            --lw-text: #fff8e7;
+            --lw-muted: #c8bea5;
+            --lw-red: #d34235;
+            --lw-gold: #e7b44f;
+            --lw-green: #6f8b55;
+        }
+
         .stApp {
+            background: var(--lw-bg);
+            color: var(--lw-text);
+        }
+
+        .block-container {
+            max-width: 980px;
+            padding-top: 2.2rem;
+            padding-bottom: 4rem;
+        }
+
+        h1, h2, h3, label, p {
+            letter-spacing: 0;
+        }
+
+        .brand-hero {
+            border: 1px solid var(--lw-line);
+            border-radius: 8px;
             background:
-                radial-gradient(circle at top left, rgba(255, 193, 7, 0.12), transparent 28rem),
-                radial-gradient(circle at top right, rgba(239, 68, 68, 0.10), transparent 26rem),
-                #0f1117;
+                linear-gradient(135deg, rgba(211, 66, 53, 0.16), rgba(25, 27, 22, 0.98) 46%),
+                var(--lw-panel);
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 118px;
+            gap: 0.9rem;
+            align-items: center;
+            padding: 1rem 1.15rem;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
         }
-        [data-testid="stMetric"] {
-            background: #171a22;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 8px;
-            padding: 0.7rem 0.9rem;
+
+        .brand-mark {
+            width: 104px;
+            aspect-ratio: 1;
+            border-radius: 999px;
+            justify-self: end;
+            display: grid;
+            place-items: center;
+            background:
+                radial-gradient(circle at 35% 28%, #fff0b8, #e7b44f 58%, #9a6c23);
+            border: 1px solid rgba(255, 228, 153, 0.65);
+            box-shadow: 0 12px 30px rgba(231, 180, 79, 0.2);
         }
-        div[data-testid="stForm"] {
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 8px;
-            padding: 1rem;
-            background: rgba(23, 26, 34, 0.76);
+
+        .brand-mark-inner {
+            width: 88px;
+            aspect-ratio: 1;
+            border-radius: 999px;
+            background: #070807;
+            color: #fff8e7;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            font-weight: 850;
+            line-height: 1.02;
+            letter-spacing: 0;
+            box-shadow: inset 0 0 0 1px rgba(255, 248, 231, 0.22);
         }
+
+        .brand-mark-main {
+            display: block;
+            font-size: 1.35rem;
+        }
+
+        .brand-mark-sub {
+            display: block;
+            color: var(--lw-gold);
+            font-size: 0.66rem;
+            margin-top: 0.12rem;
+        }
+
+        .brand-kicker {
+            color: var(--lw-gold);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.35rem;
+        }
+
+        .brand-title {
+            color: var(--lw-text);
+            font-size: clamp(2rem, 6vw, 3.4rem);
+            font-weight: 800;
+            line-height: 1.06;
+            letter-spacing: 0;
+            margin: 0;
+        }
+
+        .brand-subtitle {
+            color: var(--lw-muted);
+            font-size: 1rem;
+            line-height: 1.65;
+            max-width: 720px;
+            margin: 0.75rem 0 0;
+        }
+
+        .brand-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.55rem;
+            margin-top: 1rem;
+        }
+
+        .brand-pill {
+            border: 1px solid rgba(231, 180, 79, 0.28);
+            border-radius: 999px;
+            color: #f3dfac;
+            background: rgba(231, 180, 79, 0.08);
+            font-size: 0.88rem;
+            font-weight: 650;
+            padding: 0.38rem 0.72rem;
+            white-space: nowrap;
+        }
+
+        .section-label {
+            color: var(--lw-gold);
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.18rem;
+        }
+
+        .section-title {
+            color: var(--lw-text);
+            font-size: 1.55rem;
+            font-weight: 780;
+            line-height: 1.25;
+            margin: 0;
+        }
+
+        .section-copy,
         .order-note {
-            color: #c8cdd8;
-            font-size: 0.95rem;
-            margin-top: -0.35rem;
+            color: var(--lw-muted);
+            font-size: 0.96rem;
+            line-height: 1.65;
+            margin: 0.35rem 0 1rem;
+        }
+
+        [data-testid="stTabs"] [role="tablist"] {
+            gap: 0.45rem;
+            border-bottom: 1px solid var(--lw-line);
+        }
+
+        [data-testid="stTabs"] [role="tab"] {
+            border-radius: 8px 8px 0 0;
+            color: var(--lw-muted);
+            padding: 0.55rem 0.95rem;
+        }
+
+        [data-testid="stTabs"] [aria-selected="true"] {
+            color: var(--lw-text);
+            background: rgba(211, 66, 53, 0.13);
+        }
+
+        [data-testid="stTabs"] [data-baseweb="tab-highlight"] {
+            background-color: var(--lw-red);
+        }
+
+        div[data-testid="stForm"],
+        .stDataFrame,
+        [data-testid="stAlert"] {
+            border-radius: 8px;
+        }
+
+        [data-testid="stMetric"] {
+            background: var(--lw-panel-soft);
+            border: 1px solid var(--lw-line);
+            border-radius: 8px;
+            padding: 0.85rem 0.95rem;
+        }
+
+        div[data-testid="stForm"] {
+            border: 1px solid var(--lw-line);
+            border-radius: 8px;
+            padding: 1rem 1.05rem;
+            background: var(--lw-panel);
+        }
+
+        .stSelectbox [data-baseweb="select"],
+        .stNumberInput input,
+        .stTextInput input,
+        .stTextArea textarea {
+            background-color: #242720;
+            border-color: rgba(238, 231, 211, 0.16);
+            border-radius: 8px;
+        }
+
+        .stButton > button,
+        .stFormSubmitButton > button {
+            border-radius: 8px;
+            border: 1px solid rgba(231, 180, 79, 0.38);
+            background: var(--lw-red);
+            color: #fffaf0;
+            font-weight: 750;
+            min-height: 2.65rem;
+        }
+
+        .stButton > button:hover,
+        .stFormSubmitButton > button:hover {
+            border-color: var(--lw-gold);
+            background: #b9362c;
+            color: #fffaf0;
+        }
+
+        div[data-testid="stChatMessage"] {
+            border: 1px solid var(--lw-line);
+            border-radius: 8px;
+            background: rgba(32, 35, 29, 0.72);
+            padding: 0.72rem 0.85rem;
+        }
+
+        hr {
+            border-color: var(--lw-line);
+            margin: 1.65rem 0;
+        }
+
+        @media (max-width: 640px) {
+            .block-container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+                padding-top: 1.1rem;
+            }
+
+            .brand-hero {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+
+            .brand-mark {
+                width: 88px;
+                justify-self: start;
+                order: -1;
+            }
+
+            .brand-mark-inner {
+                width: 74px;
+            }
+
+            .brand-mark-main {
+                font-size: 1.12rem;
+            }
+
+            .brand-title {
+                font-size: 2.05rem;
+            }
         }
         </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def render_brand_header() -> None:
+    st.markdown(
+        f"""
+        <section class="brand-hero">
+            <div>
+                <div class="brand-kicker">Lom Wong Café & Restaurant</div>
+                <h1 class="brand-title">โมจิ ผู้ช่วยของล้อมวง</h1>
+                <p class="brand-subtitle">
+                    ถามข้อมูลร้าน ดูเมนู และจัดรายการสั่งอาหารได้ในที่เดียว
+                    โทนคำตอบกระชับ สุภาพ และอ้างอิงจากข้อมูลของร้าน
+                </p>
+                <div class="brand-meta">
+                    <span class="brand-pill">เปิดทุกวัน 17:00-00:00</span>
+                    <span class="brand-pill">แวงใหญ่ ขอนแก่น</span>
+                    <span class="brand-pill">Walk-in และสั่งล่วงหน้า</span>
+                </div>
+            </div>
+            <div class="brand-mark" aria-label="Lom Wong">
+                <div class="brand-mark-inner">
+                    <span class="brand-mark-main">ล้อมวง</span>
+                    <span class="brand-mark-sub">LOM WONG</span>
+                </div>
+            </div>
+        </section>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def render_section_header(label: str, title: str, copy: str) -> None:
+    st.markdown(
+        f"""
+        <div class="section-label">{label}</div>
+        <h2 class="section-title">{title}</h2>
+        <p class="section-copy">{copy}</p>
         """,
         unsafe_allow_html=True,
     )
@@ -155,6 +431,11 @@ def add_to_cart(menu_name: str, quantity: int, unit_price: float, note: str) -> 
 
 def render_chat_tab() -> None:
     rag = load_rag()
+    render_section_header(
+        "Ask Moji",
+        "ถามข้อมูลร้าน",
+        "ถามเวลาเปิด ที่ตั้ง เมนูแนะนำ หรือข้อมูลติดต่อของร้านได้เลย",
+    )
 
     if "messages" not in st.session_state:
         st.session_state.messages = []
@@ -181,10 +462,10 @@ def render_order_tab() -> None:
     if "order_cart" not in st.session_state:
         st.session_state.order_cart = []
 
-    st.subheader("สั่งอาหาร")
-    st.markdown(
-        '<div class="order-note">เลือกเมนู ใส่จำนวน แล้วกดเพิ่มลงรายการ ระบบจะสรุปยอดและบันทึกลง Google Sheets เมื่อยืนยันออเดอร์</div>',
-        unsafe_allow_html=True,
+    render_section_header(
+        "Order",
+        "สั่งอาหาร",
+        "เลือกเมนู ใส่จำนวน แล้วกดเพิ่มลงรายการ ระบบจะสรุปยอดและบันทึกลง Google Sheets เมื่อยืนยันออเดอร์",
     )
 
     col_category, col_menu, col_quantity = st.columns([1.2, 2, 0.8])
@@ -208,7 +489,7 @@ def render_order_tab() -> None:
         st.success(f"เพิ่ม {selected_item['name']} x {quantity} แล้ว")
 
     st.divider()
-    st.subheader("รายการที่เลือก")
+    render_section_header("Cart", "รายการที่เลือก", "ตรวจรายการและยอดรวมก่อนกรอกข้อมูลลูกค้า")
     if not st.session_state.order_cart:
         st.info("ยังไม่มีรายการอาหารในออเดอร์")
     else:
@@ -224,7 +505,7 @@ def render_order_tab() -> None:
             st.rerun()
 
     st.divider()
-    st.subheader("ข้อมูลลูกค้า")
+    render_section_header("Customer", "ข้อมูลลูกค้า", "ใส่ข้อมูลสำหรับติดต่อกลับและรูปแบบการรับออเดอร์")
     with st.form("confirm_order_form"):
         col_name, col_phone = st.columns(2)
         customer_name = col_name.text_input("ชื่อผู้สั่ง")
@@ -284,9 +565,13 @@ def render_order_tab() -> None:
 
 
 def main() -> None:
+    st.set_page_config(
+        page_title="โมจิ | Lom Wong Café & Restaurant",
+        page_icon="LW",
+        layout="centered",
+    )
     inject_styles()
-    st.title("โมจิ ผู้ช่วย AI ของ Lom Wong Café & Restaurant")
-    st.caption("ถามข้อมูลร้าน ดูเมนู หรือจัดรายการสั่งอาหารได้ในที่เดียว")
+    render_brand_header()
 
     chat_tab, order_tab = st.tabs(["ถามโมจิ", "สั่งอาหาร"])
 
