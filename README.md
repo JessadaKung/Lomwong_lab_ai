@@ -7,29 +7,63 @@ sdk: docker
 app_port: 8501
 ---
 
-# MilkLab° AI — Demi RAG Chatbot
+# Lomwong Cafe AI — Demi RAG Chatbot
 
-Template สำหรับ Session 3 ของคอร์ส STSW
+Demi คือผู้ช่วย AI สำหรับ Lomwong Cafe ใช้ตอบคำถามลูกค้าเกี่ยวกับเมนู เวลาเปิด ระดับความหวาน ที่ตั้ง และการสั่งล่วงหน้า โดยดึงคำตอบจาก knowledge base ของร้านผ่าน RAG pipeline
 
-## วิธีเริ่ม
+Live demo: https://huggingface.co/spaces/jetsadapa/lomwong-cafe
 
-1. กด **Use this template** ด้านบน → Create a new repository (public)
-2. เปิด repo ใหม่ของคุณ → Code → Codespaces → Create codespace
-3. รอ container build เสร็จ (~1–3 นาที)
-4. เขียน `rag_engine.py` และ `app.py` ตามคู่มือ Session 3
-5. รัน `streamlit run app.py` เพื่อทดสอบ
+## Business Domain
 
-## โครงสร้างที่เตรียมไว้ให้
+Lomwong Cafe เป็นคาเฟ่บรรยากาศเป็นกันเองสำหรับนักศึกษาและคนทำงานใกล้มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน วิทยาเขตขอนแก่น จุดประสงค์ของระบบคือช่วยลดการตอบคำถามซ้ำใน DM และช่วยลูกค้าเลือกเมนูที่เหมาะกับความต้องการ
 
-- `.devcontainer/devcontainer.json` — Python 3.11 + Copilot + Pylance
-- `requirements.txt` — streamlit, sentence-transformers, faiss-cpu, google-genai
-- `knowledge/milklab_kb.txt` — knowledge base ตัวอย่างของร้าน MilkLab°
-- `.gitignore` — กัน `.env` และ credential หลุดขึ้น GitHub
+ดู thinking process ของ Lab 4 ได้ที่ [PIVOT.md](PIVOT.md)
 
-## ไฟล์ที่ต้องเขียนเอง
+## Features
 
-- `rag_engine.py` — RAG pipeline 5 ขั้น (Load → Chunk → Embed → Search → Generate)
-- `app.py` — Streamlit UI + เรียก Gemini API
-- `.env` — เก็บ `GOOGLE_API_KEY` (อย่า commit ขึ้น GitHub)
+- ตอบ FAQ ของร้านจาก `knowledge/lomwong_cafe_kb.txt`
+- แนะนำเมนูตามความต้องการ เช่น ไม่ดื่มกาแฟ หวานน้อย หรืออยากได้เมนูแนะนำ
+- ตอบเป็นภาษาไทยแบบกระชับและสุภาพ
+- ถ้าไม่มีข้อมูลใน knowledge base จะบอกว่าไม่ทราบจากข้อมูลร้านที่มี
 
-ดูคู่มือเต็มที่  https://ecp-rmuti.gitbook.io/ai-for-solopreneurs/sessions/session-3 
+## Project Structure
+
+- `app.py` — Streamlit chat UI และ Gemini response generation
+- `rag_engine.py` — load, chunk, embed, index, search ด้วย Sentence Transformers + FAISS
+- `knowledge/lomwong_cafe_kb.txt` — knowledge base ของ Lomwong Cafe
+- `Dockerfile` — configuration สำหรับ Hugging Face Space
+- `PIVOT.md` — Lab 4 Pivot Worksheet
+
+## Local Setup
+
+```bash
+pip install -r requirements.txt
+```
+
+สร้างไฟล์ `.env` แล้วใส่ Gemini API key:
+
+```bash
+GEMINI_API_KEY=your_api_key_here
+```
+
+รันแอป:
+
+```bash
+streamlit run app.py
+```
+
+## Deploy
+
+โปรเจกต์นี้ deploy บน Hugging Face Spaces ด้วย Docker SDK ต้องตั้ง secret ใน Space Settings:
+
+```text
+GEMINI_API_KEY
+```
+
+## Demo Day Self-Check
+
+- [x] Deploy URL ใช้งานได้ (เปิดทดสอบล่าสุด: 2026-05-21)
+- [x] ไม่มี `.env` หรือ `*.json` ใน git tracking ปัจจุบัน
+- [x] PIVOT.md ครบ 3 ข้อ
+- [x] README อธิบายระบบของ domain ตัวเอง ไม่ใช่ MilkLab
+- [x] knowledge base, prompt, UI ปรับเป็น domain ใหม่หมดแล้ว

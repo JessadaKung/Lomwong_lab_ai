@@ -1,4 +1,5 @@
 import os
+import time
 
 import streamlit as st
 from dotenv import load_dotenv
@@ -10,7 +11,7 @@ from rag_engine import RAGEngine
 load_dotenv()
 
 MODEL = "gemini-2.5-flash"
-KB_PATH = "knowledge/milklab_kb.txt"
+KB_PATH = "knowledge/lomwong_cafe_kb.txt"
 
 
 @st.cache_resource
@@ -21,7 +22,7 @@ def load_rag():
 def generate_answer(prompt: str, context: str) -> str:
     api_key = os.getenv("GOOGLE_API_KEY") or os.getenv("GEMINI_API_KEY")
     if not api_key:
-        return "ยังไม่ได้ตั้งค่า GOOGLE_API_KEY ใน Secrets หรือไฟล์ .env ครับ"
+        return "ยังไม่ได้ตั้งค่า GOOGLE_API_KEY หรือ GEMINI_API_KEY ใน Secrets หรือไฟล์ .env ครับ"
 
     client = genai.Client(api_key=api_key)
     full_prompt = f"""คุณคือ Demi ผู้ช่วย AI ของร้าน Lomwong Cafe
@@ -33,8 +34,18 @@ def generate_answer(prompt: str, context: str) -> str:
 
 คำถาม: {prompt}
 """
-    response = client.models.generate_content(model=MODEL, contents=full_prompt)
-    return response.text
+    for attempt in range(3):
+        try:
+            response = client.models.generate_content(model=MODEL, contents=full_prompt)
+            return response.text
+        except Exception as exc:
+            error_text = str(exc)
+            if "quota" in error_text.lower() or "RESOURCE_EXHAUSTED" in error_text:
+                time.sleep(2**attempt)
+                continue
+            return "ระบบตอบคำถามมีปัญหาชั่วคราวครับ กรุณาลองใหม่อีกครั้ง หรือติดต่อร้านโดยตรง"
+
+    return "ตอนนี้ระบบถูกจำกัดจำนวนการใช้งานชั่วคราวครับ กรุณาลองใหม่อีกครั้งภายหลัง"
 
 
 st.title("Demi ผู้ช่วย AI ของ Lomwong Cafe")
