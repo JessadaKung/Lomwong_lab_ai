@@ -5,10 +5,20 @@ import streamlit as st
 from dotenv import load_dotenv
 from google import genai
 
-from menu_catalog import MENU_CATALOG
-from order_logger import CustomerOrder, OrderItem, append_order, format_order_message, google_sheet_configured
-from rag_engine import RAGEngine
-from telegram_report import send_order_notification, send_today_report, telegram_configured
+from src.lomwong_ai.menu_catalog import MENU_CATALOG
+from src.lomwong_ai.order_logger import (
+    CustomerOrder,
+    OrderItem,
+    append_order,
+    format_order_message,
+    google_sheet_configured,
+)
+from src.lomwong_ai.rag_engine import RAGEngine
+from src.lomwong_ai.telegram_report import (
+    send_order_notification,
+    send_today_report,
+    telegram_configured,
+)
 
 
 load_dotenv()
