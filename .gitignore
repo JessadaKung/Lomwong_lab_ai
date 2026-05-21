@@ -22,6 +22,9 @@ venv/
 .DS_Store
 Thumbs.db
 
+# Documents and binary exports
+*.pdf
+
 # IDE
 .idea/
 *.swp
