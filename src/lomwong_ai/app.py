@@ -109,25 +109,24 @@ def inject_styles() -> None:
         """
         <style>
         :root {
-            --lw-bg: #11130f;
-            --lw-panel: #191b16;
-            --lw-panel-soft: #20231d;
-            --lw-line: rgba(238, 231, 211, 0.14);
-            --lw-text: #fff8e7;
-            --lw-muted: #c8bea5;
-            --lw-red: #d34235;
-            --lw-gold: #e7b44f;
-            --lw-green: #6f8b55;
+            --lw-bg: #f7f5f1;
+            --lw-card: #ffffff;
+            --lw-card-soft: #fafafa;
+            --lw-line: rgba(17, 24, 39, 0.14);
+            --lw-text: #1f2933;
+            --lw-muted: #6b7280;
+            --lw-secondary: #4b5563;
+            --lw-primary: #D85A30;
         }
 
         .stApp {
-            background: #12140f;
+            background: var(--lw-bg);
             color: var(--lw-text);
         }
 
         .block-container {
-            max-width: 980px;
-            padding-top: 2.2rem;
+            max-width: 960px;
+            padding-top: 1.5rem;
             padding-bottom: 4rem;
         }
 
@@ -137,60 +136,59 @@ def inject_styles() -> None:
 
         .brand-hero {
             border: 1px solid var(--lw-line);
-            border-radius: 8px;
-            background: #1b1e17;
+            border-radius: 12px;
+            background: var(--lw-card);
             display: grid;
-            grid-template-columns: minmax(0, 1fr) 96px;
+            grid-template-columns: minmax(0, 1fr) 76px;
             gap: 1rem;
             align-items: center;
-            padding: 0.95rem 1.05rem;
-            margin-bottom: 1.2rem;
-            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 12px 28px rgba(17, 24, 39, 0.05);
         }
 
         .brand-mark {
-            width: 76px;
-            aspect-ratio: 1;
-            border-radius: 20px;
-            justify-self: end;
-            display: grid;
-            place-items: center;
-            background: #e7b44f;
-            border: 1px solid rgba(255, 232, 170, 0.72);
-            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
-        }
-
-        .brand-mark-inner {
             width: 64px;
             aspect-ratio: 1;
             border-radius: 16px;
-            background: #17170f;
-            color: #fff7dc;
+            justify-self: end;
+            display: grid;
+            place-items: center;
+            background: #f4c662;
+            border: 1px solid rgba(17, 24, 39, 0.12);
+        }
+
+        .brand-mark-inner {
+            width: 52px;
+            aspect-ratio: 1;
+            border-radius: 13px;
+            background: #ffffff;
+            color: #1f2933;
             display: grid;
             place-items: center;
             text-align: center;
-            font-weight: 850;
+            font-weight: 700;
             line-height: 1.05;
             letter-spacing: 0;
-            box-shadow: inset 0 0 0 1px rgba(255, 248, 231, 0.18);
+            box-shadow: inset 0 0 0 1px rgba(17, 24, 39, 0.08);
         }
 
         .brand-mark-main {
             display: block;
-            font-size: 1rem;
+            font-size: 0.82rem;
         }
 
         .brand-mark-sub {
             display: block;
-            color: var(--lw-gold);
-            font-size: 0.52rem;
+            color: var(--lw-muted);
+            font-size: 0.45rem;
             margin-top: 0.12rem;
         }
 
         .brand-kicker {
-            color: var(--lw-gold);
-            font-size: 0.8rem;
-            font-weight: 700;
+            color: var(--lw-muted);
+            font-size: 11px;
+            font-weight: 600;
             letter-spacing: 0.08em;
             text-transform: uppercase;
             margin-bottom: 0.35rem;
@@ -198,16 +196,16 @@ def inject_styles() -> None:
 
         .brand-title {
             color: var(--lw-text);
-            font-size: clamp(1.75rem, 4.4vw, 2.65rem);
-            font-weight: 800;
-            line-height: 1.15;
+            font-size: clamp(1.55rem, 3.6vw, 2.25rem);
+            font-weight: 500;
+            line-height: 1.2;
             letter-spacing: 0;
             margin: 0;
         }
 
         .brand-subtitle {
             color: var(--lw-muted);
-            font-size: 0.98rem;
+            font-size: 14px;
             line-height: 1.55;
             max-width: 720px;
             margin: 0.55rem 0 0;
@@ -221,29 +219,29 @@ def inject_styles() -> None:
         }
 
         .brand-pill {
-            border: 1px solid rgba(231, 180, 79, 0.28);
+            border: 1px solid var(--lw-line);
             border-radius: 999px;
-            color: #f3dfac;
-            background: rgba(231, 180, 79, 0.08);
-            font-size: 0.82rem;
-            font-weight: 650;
+            color: var(--lw-secondary);
+            background: #f9fafb;
+            font-size: 12px;
+            font-weight: 500;
             padding: 0.32rem 0.58rem;
             white-space: nowrap;
         }
 
         .section-label {
-            color: var(--lw-gold);
-            font-size: 0.78rem;
-            font-weight: 800;
+            color: var(--lw-muted);
+            font-size: 11px;
+            font-weight: 600;
             letter-spacing: 0.08em;
             text-transform: uppercase;
-            margin-bottom: 0.18rem;
+            margin-bottom: 0.35rem;
         }
 
         .section-title {
             color: var(--lw-text);
-            font-size: 1.8rem;
-            font-weight: 780;
+            font-size: 22px;
+            font-weight: 500;
             line-height: 1.25;
             margin: 0;
         }
@@ -251,9 +249,9 @@ def inject_styles() -> None:
         .section-copy,
         .order-note {
             color: var(--lw-muted);
-            font-size: 0.96rem;
-            line-height: 1.65;
-            margin: 0.35rem 0 1rem;
+            font-size: 14px;
+            line-height: 1.55;
+            margin: 0.4rem 0 1rem;
         }
 
         [data-testid="stTabs"] [role="tablist"] {
@@ -269,96 +267,154 @@ def inject_styles() -> None:
 
         [data-testid="stTabs"] [aria-selected="true"] {
             color: var(--lw-text);
-            background: rgba(211, 66, 53, 0.13);
+            background: #ffffff;
         }
 
         [data-testid="stTabs"] [data-baseweb="tab-highlight"] {
-            background-color: var(--lw-red);
+            background-color: var(--lw-primary);
         }
 
         div[data-testid="stForm"],
         .stDataFrame,
         [data-testid="stAlert"] {
-            border-radius: 8px;
+            border-radius: 12px;
         }
 
         [data-testid="stMetric"] {
-            background: var(--lw-panel-soft);
+            background: var(--lw-card-soft);
             border: 1px solid var(--lw-line);
-            border-radius: 8px;
+            border-radius: 12px;
             padding: 0.85rem 0.95rem;
+        }
+
+        div[data-testid="stVerticalBlockBorderWrapper"] {
+            background: var(--lw-card);
+            border: 1px solid var(--lw-line);
+            border-radius: 12px;
+            padding: 1.25rem;
         }
 
         div[data-testid="stForm"] {
             border: 1px solid var(--lw-line);
-            border-radius: 8px;
-            padding: 1rem 1.05rem;
-            background: #181b15;
+            border-radius: 12px;
+            padding: 1.25rem;
+            background: var(--lw-card);
         }
 
         .stSelectbox [data-baseweb="select"],
         .stNumberInput input,
         .stTextInput input,
         .stTextArea textarea {
-            background-color: #eee7d8;
-            border-color: rgba(18, 20, 15, 0.28);
+            background-color: #f9fafb;
+            border: 1px solid var(--lw-line);
             border-radius: 8px;
-            color: #171a14;
+            color: var(--lw-text);
+            font-size: 14px;
+            min-height: 40px;
         }
 
         label,
         [data-testid="stWidgetLabel"] p {
-            color: #e8ddc4;
-            font-weight: 650;
+            color: var(--lw-secondary);
+            font-size: 12px;
+            font-weight: 500;
         }
 
         .stSelectbox [data-baseweb="select"] * {
-            color: #171a14;
+            color: var(--lw-text);
         }
 
         .stNumberInput button {
-            background: #e3dac8;
-            border-color: rgba(18, 20, 15, 0.18);
-            color: #171a14;
+            background: #ffffff;
+            border-color: var(--lw-line);
+            color: var(--lw-text);
         }
 
         [data-testid="stAlert"] {
-            background: #1b2b34;
-            border: 1px solid rgba(130, 185, 216, 0.22);
-            color: #d8eef8;
+            background: #f9fafb;
+            border: 1px solid var(--lw-line);
+            color: var(--lw-secondary);
         }
 
         [data-testid="stAlert"] p {
-            color: #d8eef8;
+            color: var(--lw-secondary);
         }
 
         .stButton > button,
-        .stFormSubmitButton > button {
+        .stFormSubmitButton > button,
+        div[data-testid="stBaseButton-secondary"] button {
             border-radius: 8px;
-            border: 1px solid #e7b44f;
-            background: #cf3f32;
-            color: #fffaf0;
-            font-weight: 750;
-            min-height: 2.65rem;
+            border: 1px solid var(--lw-line);
+            background: #ffffff;
+            color: var(--lw-text);
+            font-weight: 500;
+            min-height: 40px;
+            font-size: 14px;
+        }
+
+        .stButton > button[kind="primary"],
+        .stFormSubmitButton > button[kind="primary"] {
+            border: 1px solid var(--lw-primary);
+            background: var(--lw-primary);
+            color: #ffffff;
+            font-weight: 600;
         }
 
         .stButton > button:hover,
         .stFormSubmitButton > button:hover {
-            border-color: var(--lw-gold);
-            background: #b9362c;
-            color: #fffaf0;
+            border-color: rgba(17, 24, 39, 0.24);
+            background: #f9fafb;
+            color: var(--lw-text);
+        }
+
+        .stButton > button[kind="primary"]:hover,
+        .stFormSubmitButton > button[kind="primary"]:hover {
+            border-color: var(--lw-primary);
+            background: #c94e25;
+            color: #ffffff;
+        }
+
+        .qty-control button,
+        div[data-testid="column"]:has(.qty-control) button {
+            min-height: 32px;
+            height: 32px;
+            padding: 0;
+            border-radius: 8px;
         }
 
         div[data-testid="stChatMessage"] {
             border: 1px solid var(--lw-line);
-            border-radius: 8px;
-            background: rgba(32, 35, 29, 0.72);
+            border-radius: 12px;
+            background: #ffffff;
             padding: 0.72rem 0.85rem;
         }
 
         hr {
             border-color: var(--lw-line);
-            margin: 1.65rem 0;
+            margin: 1.6rem 0;
+        }
+
+        .empty-cart {
+            border: 1px dashed rgba(17, 24, 39, 0.18);
+            border-radius: 12px;
+            background: #f9fafb;
+            padding: 2rem 1rem;
+            text-align: center;
+            color: var(--lw-muted);
+        }
+
+        .empty-cart-icon {
+            width: 42px;
+            height: 42px;
+            margin: 0 auto 0.75rem;
+            border-radius: 999px;
+            display: grid;
+            place-items: center;
+            background: #ffffff;
+            border: 1px solid var(--lw-line);
+            color: var(--lw-primary);
+            font-size: 20px;
+            font-weight: 600;
         }
 
         @media (max-width: 640px) {
@@ -388,7 +444,7 @@ def inject_styles() -> None:
             }
 
             .brand-title {
-                font-size: 2.05rem;
+                font-size: 1.7rem;
             }
         }
         </style>
@@ -453,6 +509,11 @@ def add_to_cart(menu_name: str, quantity: int, unit_price: float, note: str) -> 
     )
 
 
+def adjust_order_quantity(delta: int) -> None:
+    current_quantity = int(st.session_state.get("order_quantity", 1))
+    st.session_state.order_quantity = min(50, max(1, current_quantity + delta))
+
+
 def render_chat_tab() -> None:
     rag = load_rag()
     render_section_header(
@@ -485,6 +546,8 @@ def render_chat_tab() -> None:
 def render_order_tab() -> None:
     if "order_cart" not in st.session_state:
         st.session_state.order_cart = []
+    if "order_quantity" not in st.session_state:
+        st.session_state.order_quantity = 1
 
     render_section_header(
         "Order",
@@ -492,16 +555,43 @@ def render_order_tab() -> None:
         "เลือกเมนู ใส่จำนวน แล้วกดเพิ่มลงรายการ ระบบจะสรุปยอดและบันทึกลง Google Sheets เมื่อยืนยันออเดอร์",
     )
 
-    col_category, col_menu, col_quantity = st.columns([1.2, 2, 0.8])
-    category = col_category.selectbox("หมวด", list(MENU_CATALOG), key="order_category")
-    category_items = MENU_CATALOG[category]
-    item_labels = [f"{item['name']} - {item['price']} บาท" for item in category_items]
-    selected_label = col_menu.selectbox("เมนู", item_labels, key=f"order_menu_{category}")
-    selected_index = item_labels.index(selected_label)
-    selected_item = category_items[selected_index]
-    quantity = col_quantity.number_input("จำนวน", min_value=1, max_value=50, value=1, step=1, key="order_quantity")
-    item_note = st.text_input("หมายเหตุรายการนี้", placeholder="เช่น ไม่เผ็ด แยกน้ำ ไม่ใส่ผัก", key="item_note")
-    add_item = st.button("เพิ่มลงรายการ", use_container_width=True)
+    with st.container(border=True):
+        col_category, col_menu, col_quantity = st.columns([1.15, 2, 0.95])
+        category = col_category.selectbox("หมวด", list(MENU_CATALOG), key="order_category")
+        category_items = MENU_CATALOG[category]
+        item_labels = [f"{item['name']} - {item['price']} บาท" for item in category_items]
+        selected_label = col_menu.selectbox("เมนู", item_labels, key=f"order_menu_{category}")
+        selected_index = item_labels.index(selected_label)
+        selected_item = category_items[selected_index]
+
+        with col_quantity:
+            st.markdown('<div class="qty-control">จำนวน</div>', unsafe_allow_html=True)
+            qty_minus, qty_value, qty_plus = st.columns([1, 1.3, 1])
+            qty_minus.button(
+                "-",
+                key="qty_minus",
+                on_click=adjust_order_quantity,
+                args=(-1,),
+                use_container_width=True,
+            )
+            quantity = qty_value.number_input(
+                "จำนวน",
+                min_value=1,
+                max_value=50,
+                step=1,
+                key="order_quantity",
+                label_visibility="collapsed",
+            )
+            qty_plus.button(
+                "+",
+                key="qty_plus",
+                on_click=adjust_order_quantity,
+                args=(1,),
+                use_container_width=True,
+            )
+
+        item_note = st.text_input("หมายเหตุรายการนี้", placeholder="เช่น ไม่เผ็ด แยกน้ำ ไม่ใส่ผัก", key="item_note")
+        add_item = st.button("เพิ่มลงรายการ", type="primary", use_container_width=True, key="add_to_order")
 
     if add_item:
         add_to_cart(
@@ -514,19 +604,28 @@ def render_order_tab() -> None:
 
     st.divider()
     render_section_header("Cart", "รายการที่เลือก", "ตรวจรายการและยอดรวมก่อนกรอกข้อมูลลูกค้า")
-    if not st.session_state.order_cart:
-        st.info("ยังไม่มีรายการอาหารในออเดอร์")
-    else:
-        st.dataframe(st.session_state.order_cart, use_container_width=True, hide_index=True)
-        metric_cols = st.columns(3)
-        metric_cols[0].metric("จำนวนรายการ", len(st.session_state.order_cart))
-        metric_cols[1].metric("จำนวนชิ้น", sum(item["quantity"] for item in st.session_state.order_cart))
-        metric_cols[2].metric("ยอดรวม", f"{cart_total():.0f} บาท")
+    with st.container(border=True):
+        if not st.session_state.order_cart:
+            st.markdown(
+                """
+                <div class="empty-cart">
+                    <div class="empty-cart-icon">+</div>
+                    <div>ยังไม่มีรายการอาหารในออเดอร์</div>
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+        else:
+            st.dataframe(st.session_state.order_cart, use_container_width=True, hide_index=True)
+            metric_cols = st.columns(3)
+            metric_cols[0].metric("จำนวนรายการ", len(st.session_state.order_cart))
+            metric_cols[1].metric("จำนวนชิ้น", sum(item["quantity"] for item in st.session_state.order_cart))
+            metric_cols[2].metric("ยอดรวม", f"{cart_total():.0f} บาท")
 
-        clear_col, _ = st.columns([1, 3])
-        if clear_col.button("ล้างรายการ", use_container_width=True):
-            st.session_state.order_cart = []
-            st.rerun()
+            clear_col, _ = st.columns([1, 3])
+            if clear_col.button("ล้างรายการ", use_container_width=True):
+                st.session_state.order_cart = []
+                st.rerun()
 
     st.divider()
     render_section_header("Customer", "ข้อมูลลูกค้า", "ใส่ข้อมูลสำหรับติดต่อกลับและรูปแบบการรับออเดอร์")
@@ -536,7 +635,7 @@ def render_order_tab() -> None:
         phone = col_phone.text_input("เบอร์โทร")
         fulfillment = st.selectbox("รูปแบบออเดอร์", ["รับหน้าร้าน", "จองโต๊ะ/สั่งล่วงหน้า"])
         order_note = st.text_area("หมายเหตุออเดอร์", placeholder="เช่น รับประมาณ 18:30 น. หรือขอโต๊ะ 4 คน")
-        submitted = st.form_submit_button("ยืนยันออเดอร์", use_container_width=True)
+        submitted = st.form_submit_button("ยืนยันออเดอร์", type="primary", use_container_width=True)
 
     if not google_sheet_configured():
         st.warning(
