@@ -13,7 +13,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY app.py ./
 COPY src ./src
-COPY knowledge ./knowledge
+COPY data ./data
 
 EXPOSE 8501
 
