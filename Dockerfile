@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY app.py rag_engine.py ./
+COPY *.py ./
 COPY knowledge ./knowledge
 
 EXPOSE 8501
