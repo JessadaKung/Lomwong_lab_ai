@@ -3,3 +3,5 @@ sentence-transformers>=2.5
 faiss-cpu>=1.7
 google-genai>=0.3
 python-dotenv>=1.0
+gspread>=6.0
+google-auth>=2.0
