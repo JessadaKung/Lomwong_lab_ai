@@ -7,9 +7,9 @@ sdk: docker
 app_port: 8501
 ---
 
-# Lom Wong Café & Restaurant AI — Demi RAG Chatbot
+# Lom Wong Café & Restaurant AI — โมจิ RAG Chatbot
 
-Demi คือผู้ช่วย AI สำหรับ Lom Wong Café & Restaurant ใช้ตอบคำถามลูกค้าเกี่ยวกับเมนู เวลาเปิด ระดับความหวาน ที่ตั้ง เบอร์โทรศัพท์ และการสั่งล่วงหน้า โดยดึงคำตอบจาก knowledge base ของร้านผ่าน RAG pipeline
+โมจิคือผู้ช่วย AI สำหรับ Lom Wong Café & Restaurant ใช้ตอบคำถามลูกค้าเกี่ยวกับเมนู เวลาเปิด ระดับความหวาน ที่ตั้ง เบอร์โทรศัพท์ และการสั่งล่วงหน้า โดยดึงคำตอบจาก knowledge base ของร้านผ่าน RAG pipeline
 
 Live demo: https://huggingface.co/spaces/jetsadapa/lomwong-cafe
 

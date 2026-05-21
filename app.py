@@ -64,7 +64,7 @@ def generate_answer(prompt: str, context: str) -> str:
         return "ยังไม่ได้ตั้งค่า GOOGLE_API_KEY หรือ GEMINI_API_KEY ใน Secrets หรือไฟล์ .env ครับ"
 
     client = genai.Client(api_key=api_key)
-    full_prompt = f"""คุณคือ Demi ผู้ช่วย AI ของร้าน Lomwong Cafe
+    full_prompt = f"""คุณคือโมจิ ผู้ช่วย AI ของร้าน Lom Wong Café & Restaurant
 ตอบเป็นภาษาไทยให้กระชับ สุภาพ และตอบเฉพาะจากข้อมูลร้านด้านล่างเท่านั้น
 ถ้าไม่พบข้อมูล ให้ตอบว่าไม่ทราบจากข้อมูลร้านที่มี และแนะนำให้ติดต่อร้านโดยตรง
 
@@ -90,7 +90,7 @@ def generate_answer(prompt: str, context: str) -> str:
     return "ตอนนี้ระบบถูกจำกัดจำนวนการใช้งานชั่วคราวครับ กรุณาลองใหม่อีกครั้งภายหลัง"
 
 
-st.title("Demi ผู้ช่วย AI ของ Lomwong Cafe")
+st.title("โมจิ ผู้ช่วย AI ของ Lom Wong Café & Restaurant")
 st.caption("ถามเรื่องเมนู เวลาเปิด ความหวาน หรือข้อมูลร้านได้เลย")
 
 rag = load_rag()
