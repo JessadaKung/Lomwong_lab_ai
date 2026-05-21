@@ -11,7 +11,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY *.py ./
+COPY app.py ./
+COPY src ./src
 COPY knowledge ./knowledge
 
 EXPOSE 8501
