@@ -121,7 +121,7 @@ def inject_styles() -> None:
         }
 
         .stApp {
-            background: var(--lw-bg);
+            background: #12140f;
             color: var(--lw-text);
         }
 
@@ -138,55 +138,52 @@ def inject_styles() -> None:
         .brand-hero {
             border: 1px solid var(--lw-line);
             border-radius: 8px;
-            background:
-                linear-gradient(135deg, rgba(211, 66, 53, 0.16), rgba(25, 27, 22, 0.98) 46%),
-                var(--lw-panel);
+            background: #1b1e17;
             display: grid;
-            grid-template-columns: minmax(0, 1fr) 118px;
-            gap: 0.9rem;
+            grid-template-columns: minmax(0, 1fr) 96px;
+            gap: 1rem;
             align-items: center;
-            padding: 1rem 1.15rem;
+            padding: 0.95rem 1.05rem;
             margin-bottom: 1.2rem;
-            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
         }
 
         .brand-mark {
-            width: 104px;
+            width: 76px;
             aspect-ratio: 1;
-            border-radius: 999px;
+            border-radius: 20px;
             justify-self: end;
             display: grid;
             place-items: center;
-            background:
-                radial-gradient(circle at 35% 28%, #fff0b8, #e7b44f 58%, #9a6c23);
-            border: 1px solid rgba(255, 228, 153, 0.65);
-            box-shadow: 0 12px 30px rgba(231, 180, 79, 0.2);
+            background: #e7b44f;
+            border: 1px solid rgba(255, 232, 170, 0.72);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
         }
 
         .brand-mark-inner {
-            width: 88px;
+            width: 64px;
             aspect-ratio: 1;
-            border-radius: 999px;
-            background: #070807;
-            color: #fff8e7;
+            border-radius: 16px;
+            background: #17170f;
+            color: #fff7dc;
             display: grid;
             place-items: center;
             text-align: center;
             font-weight: 850;
-            line-height: 1.02;
+            line-height: 1.05;
             letter-spacing: 0;
-            box-shadow: inset 0 0 0 1px rgba(255, 248, 231, 0.22);
+            box-shadow: inset 0 0 0 1px rgba(255, 248, 231, 0.18);
         }
 
         .brand-mark-main {
             display: block;
-            font-size: 1.35rem;
+            font-size: 1rem;
         }
 
         .brand-mark-sub {
             display: block;
             color: var(--lw-gold);
-            font-size: 0.66rem;
+            font-size: 0.52rem;
             margin-top: 0.12rem;
         }
 
@@ -201,26 +198,26 @@ def inject_styles() -> None:
 
         .brand-title {
             color: var(--lw-text);
-            font-size: clamp(2rem, 6vw, 3.4rem);
+            font-size: clamp(1.75rem, 4.4vw, 2.65rem);
             font-weight: 800;
-            line-height: 1.06;
+            line-height: 1.15;
             letter-spacing: 0;
             margin: 0;
         }
 
         .brand-subtitle {
             color: var(--lw-muted);
-            font-size: 1rem;
-            line-height: 1.65;
+            font-size: 0.98rem;
+            line-height: 1.55;
             max-width: 720px;
-            margin: 0.75rem 0 0;
+            margin: 0.55rem 0 0;
         }
 
         .brand-meta {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.55rem;
-            margin-top: 1rem;
+            gap: 0.45rem;
+            margin-top: 0.8rem;
         }
 
         .brand-pill {
@@ -228,9 +225,9 @@ def inject_styles() -> None:
             border-radius: 999px;
             color: #f3dfac;
             background: rgba(231, 180, 79, 0.08);
-            font-size: 0.88rem;
+            font-size: 0.82rem;
             font-weight: 650;
-            padding: 0.38rem 0.72rem;
+            padding: 0.32rem 0.58rem;
             white-space: nowrap;
         }
 
@@ -245,7 +242,7 @@ def inject_styles() -> None:
 
         .section-title {
             color: var(--lw-text);
-            font-size: 1.55rem;
+            font-size: 1.8rem;
             font-weight: 780;
             line-height: 1.25;
             margin: 0;
@@ -296,23 +293,50 @@ def inject_styles() -> None:
             border: 1px solid var(--lw-line);
             border-radius: 8px;
             padding: 1rem 1.05rem;
-            background: var(--lw-panel);
+            background: #181b15;
         }
 
         .stSelectbox [data-baseweb="select"],
         .stNumberInput input,
         .stTextInput input,
         .stTextArea textarea {
-            background-color: #242720;
-            border-color: rgba(238, 231, 211, 0.16);
+            background-color: #eee7d8;
+            border-color: rgba(18, 20, 15, 0.28);
             border-radius: 8px;
+            color: #171a14;
+        }
+
+        label,
+        [data-testid="stWidgetLabel"] p {
+            color: #e8ddc4;
+            font-weight: 650;
+        }
+
+        .stSelectbox [data-baseweb="select"] * {
+            color: #171a14;
+        }
+
+        .stNumberInput button {
+            background: #e3dac8;
+            border-color: rgba(18, 20, 15, 0.18);
+            color: #171a14;
+        }
+
+        [data-testid="stAlert"] {
+            background: #1b2b34;
+            border: 1px solid rgba(130, 185, 216, 0.22);
+            color: #d8eef8;
+        }
+
+        [data-testid="stAlert"] p {
+            color: #d8eef8;
         }
 
         .stButton > button,
         .stFormSubmitButton > button {
             border-radius: 8px;
-            border: 1px solid rgba(231, 180, 79, 0.38);
-            background: var(--lw-red);
+            border: 1px solid #e7b44f;
+            background: #cf3f32;
             color: #fffaf0;
             font-weight: 750;
             min-height: 2.65rem;
@@ -350,17 +374,17 @@ def inject_styles() -> None:
             }
 
             .brand-mark {
-                width: 88px;
+                width: 68px;
                 justify-self: start;
                 order: -1;
             }
 
             .brand-mark-inner {
-                width: 74px;
+                width: 56px;
             }
 
             .brand-mark-main {
-                font-size: 1.12rem;
+                font-size: 0.9rem;
             }
 
             .brand-title {
