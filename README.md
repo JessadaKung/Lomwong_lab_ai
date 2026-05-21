@@ -1,3 +1,12 @@
+---
+title: Lomwong Cafe
+emoji: ☕
+colorFrom: green
+colorTo: yellow
+sdk: docker
+app_port: 8501
+---
+
 # MilkLab° AI — Demi RAG Chatbot
 
 Template สำหรับ Session 3 ของคอร์ส STSW
