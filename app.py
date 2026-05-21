@@ -10,7 +10,7 @@ from rag_engine import RAGEngine
 
 load_dotenv()
 
-MODEL = "gemini-2.5-flash"
+MODEL = "gemini-3.1-flash-lite-preview"
 KB_PATH = "knowledge/lomwong_cafe_kb.txt"
 
 
